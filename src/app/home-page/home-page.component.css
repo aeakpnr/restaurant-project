@@ -1,0 +1,39 @@
+*{
+  box-sizing: border-box;
+}
+.bgColor{
+  background-color: rgb(240, 235, 235);
+}
+
+.redBG{
+
+  animation-name: example;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+.blueBG{
+  background-color: rgb(62, 62, 248);
+}
+.yellowBG{
+  background-color: rgb(211, 185, 18);
+}
+.greenBG{
+  background-color: rgba(2, 179, 2, 0.837);
+}
+.icons{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+@keyframes example {
+
+  0%   {background: red;}
+
+  100% {background: rgb(148, 4, 4); }
+}
+.pageBg{
+  background-image: linear-gradient(to right, #353331 0%, #304352 100%);
+
+}
+.cardBg{
+  background-image: linear-gradient(120deg, #aaaeb1 0%, #c6e6f7 100%);
+}

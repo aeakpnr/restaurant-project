@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "restaurant-543dc": {
+      "hosting": {
+        "restaurant-project": [
+          "restaurant-543dc"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "restaurant-543dc"
+  }
+}

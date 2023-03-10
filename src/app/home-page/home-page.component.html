@@ -1,0 +1,229 @@
+<div class="pageBg">
+  <div class="btn-group">
+    <button
+      type="button"
+      class="rounded-2"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-chevron-bar-down"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M3.646 4.146a.5.5 0 0 1 .708 0L8 7.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zM1 11.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"
+        />
+      </svg>
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <button (click)="tableCreateModal()" class="dropdown-item">
+          Masa Oluştur
+        </button>
+      </li>
+      <li><hr class="dropdown-divider" /></li>
+      <li><button class="dropdown-item" (click)="singout()">Çıkış</button></li>
+    </ul>
+  </div>
+
+  <div class="container text-center">
+    <div class="row justify-content-center align-items-center">
+      <div class="row col-2 card p-xxl-0" [ngClass]="{
+              greenBG: item.masaDurum == 'İlgilenildi',
+              redBG: item.masaDurum == 'Müşteri Çağırıyor',
+              blueBG: item.masaDurum == 'İlgileniliyor',
+              yellowBG: item.masaDurum == 'Sipariş Hazırlanıyor'
+            }" style="margin: 0.5rem;" *ngFor="let item of tables; let i = index">
+        <div class="cols-10 p-xxl-0" >
+
+
+
+          <div
+          style="width: 100%;"
+            class="rounded-2 font-monospace fs-4"
+
+          >
+<div class="">
+            <p> Masa: {{ item.masaNo }}</p>
+          </div>
+            <div
+              style="height: 10rem"
+              class="d-flex justify-content-center align-items-center"
+            >
+              <strong>{{ item.masaDurum }}</strong>
+            </div>
+          </div>
+        </div>
+        <div class="d-gird cols-1 card-body" style="margin-top: 1rem; margin-bottom: 1rem">
+          <button
+            class="bg-white rounded-2 cols-1"
+            style=" margin: 0.2rem;"
+            title="İlgileniliyor"
+            (click)="looked(item, 'İlgileniliyor')"
+          >
+            <div class=" icons" style="width: 1.5rem; height: 1.8rem">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"
+                />
+              </svg>
+            </div>
+          </button>
+          <button
+            class=" bg-white rounded-2 cols-1"
+            style="margin: 0.2rem;"
+            title="Sipariş Hazırlanıyor"
+            (click)="looked(item, 'Sipariş Hazırlanıyor')"
+          >
+            <div class="icons" style="width: 1.5rem; height: 1.8rem">
+              <svg style="height: 1.3rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M32 0C14.3 0 0 14.3 0 32S14.3 64 32 64V75c0 42.4 16.9 83.1 46.9 113.1L146.7 256 78.9 323.9C48.9 353.9 32 394.6 32 437v11c-17.7 0-32 14.3-32 32s14.3 32 32 32H64 320h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V437c0-42.4-16.9-83.1-46.9-113.1L237.3 256l67.9-67.9c30-30 46.9-70.7 46.9-113.1V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320 64 32zM96 75V64H288V75c0 19-5.6 37.4-16 53H112c-10.3-15.6-16-34-16-53zm16 309c3.5-5.3 7.6-10.3 12.1-14.9L192 301.3l67.9 67.9c4.6 4.6 8.6 9.6 12.2 14.9H112z"
+                />
+              </svg>
+            </div>
+          </button>
+          <button
+            class="bg-white rounded-2 cols-1"
+            title="İlgilenildi"
+            style="margin: 0.2rem;"
+            (click)="looked(item, 'İlgilenildi')"
+          >
+            <div class="icons" style="width: 1.5rem; height: 1.8rem">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
+                />
+              </svg>
+            </div>
+          </button>
+          <button style="margin: 0.2rem;" class=" bg-white cols-1 rounded-2" (click)="deleteTable(item)">
+            <div class="icons" style="width: 1.5rem; height: 1.8rem;">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                style="width: 1.2rem; height: 1.2rem"
+                viewBox="0 0 448 512"
+              >
+                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="modal fade"
+    id="createTable"
+    tabindex="-1"
+    aria-labelledby="createTableLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="createTableLabel">Masa Oluştur</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="tabelCreates">
+            <label for="tableNo">Masa No: </label>
+            <input
+              type="number"
+              name="tableNo"
+              id="tableNo"
+              value="{{ newTableNo }}"
+              formControlName="tabelNo"
+              form
+            /><br />
+            <label for="situation">Masa Durumu</label>
+            <select
+              class="form-select"
+              name="situation"
+              id="situation"
+              formControlName="tabelSituation"
+            >
+              <option value="İlgilenildi" selected>İlgilenildi</option>
+              <option value="Müşteri Çağırıyor">Müşteri Çağırıyor</option>
+              <option value="İlgileniliyor">İlgileniliyor</option>
+              <option value="Sipariş Hazırlanıyor">Sipariş Hazırlanıyor</option>
+            </select>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Kapat
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="tableCreateFunc()"
+            data-bs-dismiss="modal"
+          >
+            Kaydet
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade bd-example-modal-sm"
+  id="areYouSure"
+  tabindex="-1"
+  aria-labelledby="areYouSureLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="areYouSureLabel">
+          Masa {{ deleteMasaNo }} Silinecek
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Silmek İstediğinize Emin Misiniz?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Kapat
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="deleteTableModal()"
+          data-bs-dismiss="modal"
+        >
+          Sil
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
